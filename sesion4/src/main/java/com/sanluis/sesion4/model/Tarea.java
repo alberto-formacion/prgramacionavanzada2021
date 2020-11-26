@@ -15,6 +15,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @NamedQueries({
 	@NamedQuery(
 			name = "get_tarea_by_nombre",
@@ -23,6 +26,7 @@ import javax.persistence.Table;
 })
 @Entity
 @Table(name = "tareas")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 public class Tarea {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

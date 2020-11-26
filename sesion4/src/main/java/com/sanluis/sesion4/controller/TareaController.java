@@ -3,6 +3,8 @@ package com.sanluis.sesion4.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,8 +23,8 @@ public class TareaController {
 	TareaService tareaService;
 	
 	@GetMapping
-	List<Tarea> getAllTareas(){
-		return tareaService.getAllTareas();
+	ResponseEntity<List<Tarea>> getAllTareas(){
+		return new ResponseEntity<List<Tarea>>(tareaService.getAllTareas(), HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/search/tarea/{nombre}")
